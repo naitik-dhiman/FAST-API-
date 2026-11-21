@@ -7,4 +7,4 @@ if __name__ ==  "__main__":
 
     # * it can be app.app:hi if there is name of our api is hi 
     # * host is defining the domain we can access it localhost 
-    
+         
