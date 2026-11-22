@@ -5,3 +5,4 @@
 # *handle .gitignore and .env files 
 # *http://localhost:8000/docs#/default/hello_world_hello_world_get -> for the checking and testing of our API fast API docs 
 # * redoc is also a newer version of FASTAPI for checking 
+# * raise exceptions using HTTPexceptions 
