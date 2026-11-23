@@ -1,5 +1,5 @@
 from fastapi import FastAPI , HTTPException
-from app.schemas import PostCreate
+from app.schemas import PostCreate, PostResponse 
 
 app = FastAPI()
 
@@ -41,15 +41,26 @@ def get_all_posts(limit: int):
 def get_post (id : int ):
 
      if id not in text_posts :
-          raise HTTPException(status_code=404 , details = "Post Not found")
+          raise HTTPException(status_code=404 , detail= "Post Not found")
      return text_posts.get(id) 
 
  
 
 # * creating a post for uploading data after creating a schema using pydantic which include title and content as data fields 
 
+# * no return type 
+# @app.post("/posts")
+# def create_post (post: PostCreate):
+#      new_post = {"title"  : post.title , "content" : post.content}
+#      text_posts[max(text_posts.keys()) + 1 ] =  new_post 
+#      return new_post 
+
+
+# * with return type of data schema created 
 @app.post("/posts")
-def create_post (post: PostCreate):
-     new_post = {"title"  : post.title , "content" : "post.content"}
+def create_post (post: PostCreate)-> PostResponse: 
+     new_post = {"title"  : post.title , "content" : post.content}
      text_posts[max(text_posts.keys()) + 1 ] =  new_post 
      return new_post 
+
+# ! after defining this there may be error if we return something else 
